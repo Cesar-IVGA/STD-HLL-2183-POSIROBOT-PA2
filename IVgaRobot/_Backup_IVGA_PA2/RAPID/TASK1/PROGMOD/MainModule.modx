@@ -1,0 +1,479 @@
+MODULE MainModule
+
+    !***********************************************************
+    !
+    ! Módulo:       Atornillado
+    !
+    ! Descripción:  PROGRAMA BASE PARA LAS ESTACIONES DE ATORNILLADO
+    !               CON ROBOTS ABB IRB 1300
+    !
+    ! Autor:        OMAR RAMOS TSA PL-7 
+    !
+    ! Versión:      1.0
+    !
+    !***********************************************************
+
+
+    !***********************************************************
+    !
+    ! Procedimiento Main
+    !
+    !  
+    !
+    !***********************************************************
+
+    PERS tooldata screw01 := [TRUE,[[269.35,-381.341,95.5206],[0.6615,0.305234,0.639223,-0.246259]],[5,[0,0,0],[1,0,0,0],0.01,0.01,0.01]];
+    PERS wobjdata Plate:=[FALSE,TRUE,"",[[861.6,102.536,381.134],[0.999997,0.00151758,0.00171225,-0.00101467]],[[0,0,0],[1,0,0,0]]];
+    !--------------------------------------------------------------------------------------------------------------------------------------------------------
+    CONST robtarget HomePosition:=[[297.85,101.03,485.19],[0.0619204,0.0329449,0.997503,-0.008269],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget BypassPosition:=[[746.18,-10.61,1180.36],[0.0476854,0.0211569,-0.997669,-0.0439845],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget MaintenacePosition:=[[-261.64,-110.20,444.71],[0.0166131,-0.995509,0.00218144,0.0931726],[-2,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+
+    CONST robtarget Screw1_Aprox:=[[64.74,58.77,158.63],[0.0109024,-0.0516179,-0.998597,-0.00464643],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Screw1_Place:=[[65.12,58.41,48.58],[0.0109154,-0.0516093,-0.998597,-0.00461653],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Screw2_Aprox:=[[-492.23,79.90,154.39],[0.0596033,-0.0815501,0.99241,0.0701448],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Screw2_Place:=[[-492.23,79.90,154.39],[0.0596033,-0.0815501,0.99241,0.0701448],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Screw3_Aprox:=[[-492.23,79.90,154.39],[0.0596033,-0.0815501,0.99241,0.0701448],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Screw3_Place:=[[-492.23,79.90,154.39],[0.0596033,-0.0815501,0.99241,0.0701448],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget CurrentPos;
+
+    !--------------------------------------------------------------------------------------------------------------------------------------------------------
+    CONST robtarget Purga_tornillo:=[[69.89,445.40,322.30],[0.00714083,0.558639,-0.829231,0.0157314],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    PERS loaddata Screw_load := [6.9,[0,0,0],[1,0,0,0],0,0,0];
+    PERS num Position_number:=200;
+    VAR robtarget Screw_Aux;
+    VAR num Tornillo := 0;
+    VAR num Posicion :=0 ;
+    PERS tooldata atornillador := [TRUE,[[483.324,109.305,26.6121],[0.699476,0.0124633,0.714434,-0.0127298]],[0.1,[0,0.1,0.1],[1,0,0,0],0,0,0]];
+    CONST robtarget HomePosition10 := [[268.41,446.10,360.28],[0.0153959,-0.281012,0.958923,0.0355231],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    PROC main()
+
+        !-------WE RESET ECHO SIGNAL ------------
+        SETGO GO_PROGRAM_ECHO,0;
+        SETGO GO_VERSION_ECHO,0;
+        SETGO GO_SCREWDRIVER_POINT_ECHO,0;
+        SETGO GO_POS_NUMBER_ECHO,0;
+        !----------------------------------------
+
+        TEST GI_PROGRAM
+
+        CASE 1:
+            ! Seleccion de Modelo 1 
+            MODEL_1;
+        CASE 2:
+            ! Seleccion de Modelo 2
+            Home_Position;
+        CASE 3:
+            ! Seleccion de Modelo 3
+            !MODEL_3;
+            Manual_Screw;
+        CASE 15:
+            ! Limpieza de atornillador
+            Clean_Screw;
+        CASE 100:
+            ! Mantenimiento 
+            Mantenimiento;
+        CASE 110:
+            ! Mantenimiento 
+            Purge;
+        CASE 150:
+            ! BYPASS
+			Safe_Home;
+        CASE 180:
+            Safe_Home;
+
+        DEFAULT:
+            !ERROR_PROGRAM;
+        ENDTEST
+        !----------------------------------------
+    ENDPROC
+    
+    
+    PROC Manual_Screw()
+        
+        SetGO GO_PROGRAM_ECHO,3;
+        WaitTime 0.2;
+        TEST GI_VERSION
+        
+        CASE 1:
+        SetGO GO_VERSION_ECHO,1;
+        WaitTime 0.2;
+        
+        
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P1, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P1,V500,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P1, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Home_Position;
+        
+        CASE 2:
+        SetGO GO_VERSION_ECHO,2;
+        WaitTime 0.2;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P2, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P2,V500,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P2, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Home_Position;
+        
+        CASE 3:
+        SetGO GO_VERSION_ECHO,3;
+        WaitTime 0.2;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P3, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P3,V500,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P3, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Home_Position;
+        
+        CASE 4:
+        SetGO GO_VERSION_ECHO,4;
+        WaitTime 0.2;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P4, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P4,v500,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P4, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Home_Position;
+        
+        CASE 5:
+        SetGO GO_VERSION_ECHO,5;
+        WaitTime 0.2;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P5, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P5,V500,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P5, v1000, Z10, screw01\WObj:=Plate;
+        !==================================================
+        Home_Position;
+        
+       
+        ENDTEST
+        
+        
+    ENDPROC
+    
+    PROC Safe_Home()
+        
+         TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=            POSICÍON DE HOME                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+        
+        CurrentPos:=CRobT(\Tool:=atornillador\WObj:=wobj0);
+        IF CurrentPos.trans.z<470 OR CurrentPos.trans.z>480 THEN
+        MoveL Offs(CurrentPos,0,0,476-CurrentPos.trans.z), v300, fine, atornillador;
+        WaitRob\ZeroSpeed;
+        ENDIF
+      
+		!MoveJ HomePosition10, v500, z50, atornillador;
+		MoveL HomePosition, v500, z50, atornillador;
+        WaitRob\ZeroSpeed;
+        !========================================================
+        Position_Number:=200;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        SETGO GO_PROGRAM_ECHO,0;
+        SETGO GO_VERSION_ECHO,0;
+        SETGO GO_SCREWDRIVER_POINT_ECHO,0;
+        SETGO GO_POS_NUMBER_ECHO,0;
+        TPErase;
+		EXIT;
+        !========================================================
+        
+        
+    ENDPROC
+    
+    
+    
+    
+    
+    PROC Home_Position()
+
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=            POSICÍON DE HOME                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+        
+       
+      
+		!MoveJ HomePosition10, v500, z50, atornillador;
+		MoveL HomePosition, v500, z50, atornillador;
+        WaitRob\ZeroSpeed;
+        !========================================================
+        Position_Number:=200;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        SETGO GO_PROGRAM_ECHO,0;
+        SETGO GO_VERSION_ECHO,0;
+        SETGO GO_SCREWDRIVER_POINT_ECHO,0;
+        SETGO GO_POS_NUMBER_ECHO,0;
+        TPErase;
+        !========================================================
+
+    ENDPROC
+    
+    
+    PROC JHome_Position()
+
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=            POSICÍON DE HOME                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+		MoveL HomePosition, v500, z50, atornillador;
+        WaitRob\ZeroSpeed;
+        !========================================================
+        Position_Number:=200;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        SETGO GO_PROGRAM_ECHO,0;
+        SETGO GO_VERSION_ECHO,0;
+        SETGO GO_SCREWDRIVER_POINT_ECHO,0;
+        SETGO GO_POS_NUMBER_ECHO,0;
+        TPErase;
+        !========================================================
+        
+    endproc
+
+    PROC Clean_Screw()
+
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=   POSICÍON DE PURGA DE ATORNILLADOR        =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+        MOVEJ HomePosition,V100,Z50,screw01\WObj:=Plate;
+        Position_Number:=200;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        !========================================================
+        MoveJ Purga_tornillo,v100,z50,screw01\WObj:=Plate;
+        Position_Number:=210;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        !========================================================
+        !TPErase;
+    ENDPROC
+
+    PROC Mantenimiento()
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=       POSICÍON DE MANTENIMIENTO            =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+        MOVEJ HomePosition, V100, Z50, atornillador\WObj:=wobj0;
+        WaitTime 0.5;
+        !========================================================
+        MOVEJ MaintenacePosition, V100, Z50, atornillador\WObj:=wobj0;
+        WaitRob\ZeroSpeed;
+        Position_Number := 200;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        !========================================================
+        !TPErase0;
+    ENDPROC
+    
+      PROC Purge()
+          
+        SetGO GO_PROGRAM_ECHO,110;
+        
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=       POSICÍON DE PURGA         =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+        MOVEJ Purga_tornillo, V500, Z50, atornillador\WObj:=wobj0;
+        WaitRob\ZeroSpeed;
+        Position_Number:=130;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        !========================================================
+        WaitDI DI_59_ScrewDrive_Finish,1;
+        
+        !========================================================
+        !TPErase0;
+    ENDPROC
+
+    PROC Bypass()
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=              ¡¡PRECAUCIÓN!!                =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "= EL ROBOT SE ENCUENTRA EN MOVIENDOCE A      =";
+        TPWRITE "=       POSICÍON DE MANTENIMIENTO            =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        !========================================================
+        MOVEJ HomePosition,V100,Z50,screw01\WObj:=Plate;
+        Position_Number:=200;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        !========================================================
+        MOVEJ BypassPosition,V100,Z50,screw01\WOBJ:=wobj0;
+        Position_Number:=230;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        WaitTime 0.5;
+        !========================================================
+        !TPErase0;
+
+    ENDPROC
+
+    PROC ERROR_PROGRAM()
+
+        TPErase;
+        TPWrite " * * * * * * * ¡¡ATENCION!! * * * * * * * ";
+        TPWRITE "        ";
+        TPWrite " VERIFIQUE EL NUMERO DE PROGRAMA SELECCIONADO ";
+        TPWrite "        ";
+        TPWRITE "        ";
+        TPWrite "  EL PROGRAMA SE ABORTARA POR SEGURIDAD";
+        EXIT;
+
+    ENDPROC
+
+    PROC ERROR_VERSION()
+        TPErase;
+        TPWrite " * * * * * * * ¡¡ATENCION!! * * * * * * * ";
+        TPWRITE "        ";
+        TPWrite "    VERIFIQUE LA VERSIÓN SELECCIONADA ";
+        TPWrite "        ";
+        TPWRITE "        ";
+        TPWrite "  EL PROGRAMA SE ABORTARA POR SEGURIDAD";
+        EXIT;
+
+    ENDPROC
+
+    PROC ERROR_SCREWDRIVER()
+
+        TPErase;
+        TPWrite " * * * * * * * ¡¡ATENCION!! * * * * * * * ";
+        TPWRITE "        ";
+        TPWrite " VERIFIQUE EL NUMERO DE TORNILLO SELECCIONADO ";
+        TPWrite "        ";
+        TPWRITE "        ";
+        TPWrite "  EL PROGRAMA SE ABORTARA POR SEGURIDAD";
+        EXIT;
+
+    ENDPROC
+
+ENDMODULE

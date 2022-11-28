@@ -1,0 +1,79 @@
+MODULE Screw
+
+    PROC SCREWING_CYCLE()
+        Set DO_56_Screwdriver_Start;
+        WaitTime 0.5;
+        Reset DO_56_Screwdriver_Start;
+        TPErase;
+        TPWrite "==============================================";
+        TPWrite "=                                            =";
+        TPWrite "=             ¡¡ATORNILLANDO!!               =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+        TPWRITE "=                                            =";
+        TPWRITE "=                                            =";
+        TPWrite "=          EL ROBOT REALIZARA LA             =";
+        TPWRITE "=         SECUENCIA DE ATORNILLADO           =";
+        TPWRITE "=                                            =";
+        TPWrite "==============================================";
+    
+        !WaitTime 8;
+        !========== Tornillo NG ==========
+        !WHILE DI_56_Screwdriver_NG = 1 DO
+        !GOTO modelo_1;
+        !TPErase;
+        !TPWrite "==============================================";
+        !TPWrite "=                                            =";
+        !TPWrite "=          ¡¡TORNILLO  MALO!!                =";
+        !TPWRITE "=                                            =";
+        !TPWrite "==============================================";
+        !TPWRITE "=                                            =";
+        !TPWRITE "=                                            =";
+        !TPWrite "=        EL ROBOT SE MOVERA A LA             =";
+        !TPWRITE "=            POSICÍON DE HOME                =";
+        !TPWRITE "=                                            =";
+        !TPWrite "==============================================";
+        !MOVEJ HomePosition,V2500,Z100,screw01\WOBJ:=wobj0;
+
+        !========== Tornillo OK ==========
+        !IF DI_56_Screwdriver_OK, 1;
+        !TPErase;
+        !TPWrite "==============================================";
+        !TPWrite "=                                            =";
+        !TPWrite "=          ¡¡TORNILLO BUENO!!                =";
+        !TPWRITE "=                                            =";
+        !TPWrite "==============================================";
+        !TPWRITE "=                                            =";
+        !TPWRITE "=                                            =";
+        !TPWrite "=        EL ROBOT SE MOVERA A LA             =";
+        !TPWRITE "=           SIGUIENTE POSICÍON               =";
+        !TPWRITE "=                                            =";
+        !TPWrite "==============================================";
+
+    ENDPROC
+
+    PROC SUPPLY_SCREWS()
+        !Set DO_58_Screw_Supply;
+        !WaitTime 0.5;
+        !Reset DO_58_Screw_Supply;
+        !TPErase;
+        !TPWrite "==============================================";
+        !TPWrite "=                                            =";
+        !TPWrite "=       ¡¡SUMINISTRO DE TORNILLO !!          =";
+        !TPWRITE "=                                            =";
+        !TPWrite "==============================================";
+        !TPWRITE "=                                            =";
+        !TPWRITE "=                                            =";
+        !TPWrite "=                                            =";
+        !TPWRITE "=                                            =";
+        !TPWRITE "=                                            =";
+        !TPWrite "==============================================";
+        WaitDI DI_56_Screwdriver_OK,1;
+        !Set DO_58_Screw_Supply;
+        !WaitTime 0.5;
+        !Reset DO_58_Screw_Supply;
+
+
+    ENDPROC
+
+ENDMODULE

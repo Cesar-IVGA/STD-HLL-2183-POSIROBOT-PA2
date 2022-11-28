@@ -1,0 +1,45 @@
+#
+# Generated backup file, do not edit.
+#
+# Originally at: /user/TEMP/backup.252515
+# 2022-11-27  16:13:37
+#
+>>SYSTEM_ID:
+1300-500498
+
+>>PRODUCTS_ID:
+RobotControl Version: 7.7.1
+RobotOS Version: 6.0.1
+FlexPendantSoftwareUpdate Version: 1.9.0
+Robots Version: 1.7.1
+
+  English
+  3120-2 FlexPendant Essential App Package
+  3151-1 FlexPendant Program Package
+  3020-2 PROFINET Device
+  RobotControl Base
+  Axis Calibration
+  C30/C90XT-A1
+  FlexPendant App Package
+  IRB 1300-10/1.15
+
+>>HOME:
+All public files and directories
+
+>>SYSPAR:
+SYS.cfg
+SIO.cfg
+PROC.cfg
+MMC.cfg
+MOC.cfg
+EIO.cfg
+
+
+>>TASK1: (T_ROB1,,)
+PROGMOD/Screw.modx @ 
+PROGMOD/MainModule.modx @ 
+PROGMOD/Calib_Atornillador.modx @ 
+PROGMOD/Modelo_1c.modx @ 
+
+
+>>EOF:

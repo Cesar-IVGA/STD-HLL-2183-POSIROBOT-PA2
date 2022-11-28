@@ -1,0 +1,797 @@
+MODULE Modelo_1c
+
+    !************************************ MODEL 1 SAE ***************************************************
+
+    !================ MODEL 1 SCREWDRIVER POINT 1 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P1:=[[333.77,-822.40,476.43],[0.0140562,-0.621872,-0.782973,0.00562279],[-1,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P1:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P1:=[[332.59,-820.72,416.34],[0.0140466,-0.621862,-0.78298,0.00566239],[-1,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 2 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P2:=[[372.56,-482.76,317.71],[0.0138788,-0.621858,-0.782986,0.00572266],[-1,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P2:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P2:=[[372.94,-483.70,160.06],[0.0138765,-0.621928,-0.78293,0.00579488],[-1,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 3 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P3:=[[123.17,59.20,-2.79],[0.00113203,-0.0211714,-0.999766,-0.00437865],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P3:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P3:=[[123.27,59.13,-22.69],[0.00110938,-0.021184,-0.999765,-0.0043686],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 4 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P4:=[[107.24,60.41,-2.63],[0.00967468,0.0210161,0.999731,-0.00163474],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P4:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P4:=[[107.24,60.35,-22.20],[0.00982519,0.0209614,0.999731,-0.00167071],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 5 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P5:=[[93.45,58.75,-2.58],[0.00103011,-0.0212463,-0.999764,-0.00442692],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P5:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P5:=[[93.66,58.66,-23.28],[0.000859272,-0.0212561,-0.999764,-0.00441202],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 6 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P6:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P6:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P6:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 7 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P7:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P7:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P7:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 8 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P8:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P8:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P8:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 9 SAE ===============
+    CONST robtarget APPROACH_MODEL1_SAE_P9:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_SAE_P9:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_SAE_P9:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+
+    !************************************ MODEL 1 ECE ***************************************************
+
+    !================ MODEL 1 SCREWDRIVER POINT 1 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P1:=[[130.34,907.88,518.91],[0.0119682,-0.44751,0.894101,-0.0132346],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P1:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P1:=[[131.27,908.65,429.20],[0.0119098,-0.447502,0.89411,-0.0129498],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 2 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P2:=[[161.99,570.47,280.30],[0.0131453,-0.448806,0.893394,-0.0157148],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P2:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P2:=[[162.04,570.47,168.35],[0.0131646,-0.448776,0.893409,-0.015745],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 3 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P3:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P3:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P3:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 4 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P4:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P4:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P4:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 5 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P5:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P5:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P5:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 6 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P6:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P6:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P6:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 7 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P7:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P7:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P7:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 8 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P8:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P8:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P8:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 9 ECE ===============
+    CONST robtarget APPROACH_MODEL1_ECE_P9:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_ECE_P9:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P9:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Aux_pos := [[116.16,292.27,485.18],[0.0596728,-0.388401,0.919371,0.0184568],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget P1_sae := [[270.87,-159.19,484.34],[0.0501504,0.445312,0.893399,-0.0319388],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_ECE_P12 := [[219.56,573.05,165.17],[0.0112893,-0.448266,0.893735,-0.0129696],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    !************************************ MODEL 1 PA2 ***************************************************
+
+    !================ MODEL 1 SCREWDRIVER POINT 1 PA2 RH===============
+    CONST robtarget APPROACH_MODEL1_PA2_P1:=[[130.34,907.88,518.91],[0.0119682,-0.44751,0.894101,-0.0132346],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_PA2_P1:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_PA2_P1:=[[131.27,908.65,429.20],[0.0119098,-0.447502,0.89411,-0.0129498],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 2 PA2 RH ===============
+    CONST robtarget APPROACH_MODEL1_PA2_P2:=[[161.99,570.47,280.30],[0.0131453,-0.448806,0.893394,-0.0157148],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_PA2_P2:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_PA2_P2:=[[162.04,570.47,168.35],[0.0131646,-0.448776,0.893409,-0.015745],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 3 PA2 RH ===============
+    CONST robtarget APPROACH_MODEL1_PA2_P3:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_PA2_P3:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_PA2_P3:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 4 PA2 LH ===============
+    CONST robtarget APPROACH_MODEL1_PA2_P4:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_PA2_P4:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_PA2_P4:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 5 PA2 LH ===============
+    CONST robtarget APPROACH_MODEL1_PA2_P5:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_PA2_P5:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_PA2_P5:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    !================ MODEL 1 SCREWDRIVER POINT 6 PA2 LH ===============
+    CONST robtarget APPROACH_MODEL1_PA2_P6:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget NEAR_MODEL1_PA2_P6:=[[989.44,-960.46,530.24],[0.00676511,0.726759,0.686184,0.0304623],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget SCREW_MODEL1_PA2_P6:=[[1283.13,-962.06,413.14],[0.0132629,0.747729,0.663522,0.021556],[-1,2,-2,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+
+
+    PROC MODEL_1()
+        !----------------------------------------
+        SETGO GO_PROGRAM_ECHO,1;
+        TEST GI_VERSION
+
+        CASE 10:
+            ! Version SAE 
+            Model_1_SAE;
+        CASE 11:
+            ! Version ECE
+            Model_1_ECE;
+        CASE 12:
+            ! Version PA2
+            Model_1_PA2;
+            !CASE 13:
+            ! Version XXXX
+            !Model_1_XXXX;
+            !CASE 14:
+            ! Version XXXX
+            !Model_1_XXXX;
+            !CASE 15:
+            ! Version XXXX
+            !Model_1_XXXX;
+
+        DEFAULT:
+            ERROR_VERSION;
+        ENDTEST
+
+    ENDPROC
+
+    PROC Model_1_SAE()
+        SETGO GO_VERSION_ECHO,10;
+        !----------------------------------------
+        TEST GI_SCREWDRIVER_POINT
+
+        CASE 1:
+            SCREW_P1_MODEL1_SAE;
+        CASE 2:
+            SCREW_P2_MODEL1_SAE;
+        CASE 3:
+            Home_Position;
+        CASE 4:
+            SCREW_P4_MODEL1_SAE;
+        CASE 5:
+            SCREW_P5_MODEL1_SAE;
+         
+        CASE 6:
+            Home_Position;
+            !----------------------------------------
+        endtest
+    ENDPROC
+
+    PROC Model_1_ECE()
+        
+        SETGO GO_VERSION_ECHO,11;
+        !----------------------------------------
+        TEST GI_SCREWDRIVER_POINT
+        
+        CASE 1:
+        SCREW_P1_MODEL1_ECE;
+        
+        CASE 2:
+        SCREW_P2_MODEL1_ECE;
+        
+        CASE 3:
+		Home_Position;
+        
+        ENDTEST
+        
+        !---------------------------------------
+
+    ENDPROC
+    
+    PROC Model_1_PA2()
+        
+        SETGO GO_VERSION_ECHO,12;
+        !----------------------------------------
+        TEST GI_SCREWDRIVER_POINT
+        
+        CASE 1:
+        SCREW_P1_MODEL1_ECE;
+        
+        CASE 2:
+        SCREW_P2_MODEL1_ECE;
+        
+        CASE 3:
+		Home_Position;
+        
+        ENDTEST
+        
+        !---------------------------------------
+
+    ENDPROC
+
+    PROC SCREW_P1_MODEL1_SAE()
+
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+		!MoveJ P1_sae, v500, z50, atornillador;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+		MoveL APPROACH_MODEL1_SAE_P1, v800, z10, atornillador;
+        MoveL Offs (SCREW_MODEL1_SAE_P1,0,0,15),v500, fine, atornillador;
+        WaitRob\InPos;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SCREWING_CYCLE;
+        Waittime 1.5;
+        MOVEL SCREW_MODEL1_SAE_P1, v10, fine, atornillador;
+        
+		
+        !==================================================
+        !SCREWING_CYCLE;
+        !==================================================
+
+        waitDI DI_59_ScrewDrive_Finish,1;
+		MoveL Offs (SCREW_MODEL1_SAE_P1,0,0,15), v100, fine, atornillador;
+
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+		MoveL APPROACH_MODEL1_SAE_P1, v500, z10, atornillador;
+
+        WaitRob\InPos;
+        
+
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+    ENDPROC
+
+    PROC SCREW_P2_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+		MoveL APPROACH_MODEL1_SAE_P2, v800, z50, atornillador;
+        MoveL Offs (SCREW_MODEL1_SAE_P2,0,0,15),v500, fine, atornillador;
+          WaitRob\InPos;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SCREWING_CYCLE;
+        Waittime 2;
+        MoveL SCREW_MODEL1_SAE_P2, v10, fine, atornillador;
+        !==================================================
+        
+        !==================================================
+        waitDI DI_59_ScrewDrive_Finish,1;
+		MoveL Offs (SCREW_MODEL1_SAE_P2,0,0,15), v100, fine, atornillador;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+		MoveL APPROACH_MODEL1_SAE_P2, v500, z50, atornillador;
+        WaitRob\InPos;
+        
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+
+
+    ENDPROC
+
+    PROC SCREW_P3_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P3,v1000,Z10,screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P3,v100,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        waitDI DI_59_ScrewDrive_Finish,1;
+
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P3,v1000,Z10,screw01\WObj:=Plate;
+
+        WaitRob\ZeroSpeed;
+        Position_Number:=15;
+        
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+
+
+
+
+    ENDPROC
+
+    PROC SCREW_P4_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P4,v1000,Z10,screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P4,v100,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        waitDI DI_59_ScrewDrive_Finish,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P4,v1000,Z10,screw01\WObj:=Plate;
+        WaitRob\ZeroSpeed;
+        
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+
+
+    ENDPROC
+
+    PROC SCREW_P5_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P5,v1000,Z10,screw01\WObj:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P5,V100,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        waitDI DI_59_ScrewDrive_Finish,1;
+        !==================================================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P5,v1000,Z10,screw01\WObj:=Plate;
+        WaitRob\ZeroSpeed;
+        
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+
+
+    ENDPROC
+
+    PROC SCREW_P6_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P6,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P6,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P6,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P7_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P7,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P7,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P7,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P8_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P8,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P8,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P8,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P9_MODEL1_SAE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P9,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_SAE_P9,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_SAE_P9,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    !------------------------------- * * * * * ECE * * * * * ----------------------------
+
+    PROC SCREW_P1_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>11 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEl APPROACH_MODEL1_ECE_P1,v500,Z10,atornillador;
+        MoveL Offs (SCREW_MODEL1_ECE_P1,0,0,10), v500, fine, atornillador;
+        WaitRob\InPos;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SCREWING_CYCLE;
+        Waittime 1.5;
+        MOVEl SCREW_MODEL1_ECE_P1, v20, fine, atornillador;
+        !==================================================
+     
+        !==================================================
+		waitDI DI_59_ScrewDrive_Finish,1;
+		MoveL Offs (SCREW_MODEL1_ECE_P1,0,0,10), v100, fine, atornillador;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEl APPROACH_MODEL1_ECE_P1,V500,Z10,atornillador;
+		WaitRob\InPos;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+
+    ENDPROC
+
+    PROC SCREW_P2_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>11 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEl APPROACH_MODEL1_ECE_P2,V400,Z10,atornillador;
+         MoveL Offs (SCREW_MODEL1_ECE_P2,0,0,10), v500, fine, atornillador;
+        WaitRob\InPos;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SCREWING_CYCLE;
+        Waittime 1.5;
+        MOVEL SCREW_MODEL1_ECE_P2, v10, fine, atornillador;
+    
+        !==================================================
+        
+        !==================================================
+        WaitDI DI_59_ScrewDrive_Finish, 1;
+		MoveL Offs (SCREW_MODEL1_ECE_P2,0,0,10), v100, fine, atornillador;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+		!MoveJ SCREW_MODEL1_ECE_P12, v100, fine, atornillador;
+        MOVEJ APPROACH_MODEL1_ECE_P2, v300, Z10, atornillador;
+		WaitRob\InPos;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+
+    ENDPROC
+
+    PROC SCREW_P3_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P3,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P3,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P3,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P4_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P4,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P4,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P4,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P5_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P5,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P5,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P5,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P6_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P6,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P6,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P6,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P7_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P7,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P7,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P7,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P8_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P8,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P8,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P8,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+    PROC SCREW_P9_MODEL1_ECE()
+        SETGO GO_SCREWDRIVER_POINT_ECHO,1;
+        !=========== VERIFY PROGRAM =======================
+        IF GI_PROGRAM<>1 ERROR_PROGRAM;
+        !============ VERIFY MODEL ========================
+        IF GI_VERSION<>10 ERROR_VERSION;
+        !======== VERIFY SCREWFRIVER POINT ================
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P9,V100,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=13;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ SCREW_MODEL1_ECE_P9,V50,fine,screw01\WOBJ:=Plate;
+        WaitRob\ZeroSpeed;
+        !==================================================
+        SCREWING_CYCLE;
+        !==================================================
+        WaitDI DI_56_Screwdriver_OK,1;
+        Position_Number:=10;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        MOVEJ APPROACH_MODEL1_ECE_P9,V50,Z10,screw01\WOBJ:=Plate;
+        !==================================================
+        Position_Number:=15;
+        SetGO GO_POS_NUMBER_ECHO,Position_Number;
+        SUPPLY_SCREWS;
+
+    ENDPROC
+
+PROC PA2_RH()
+	MoveJ [[338.60,-711.13,382.29],[0.0253785,-0.4988,-0.866333,0.00472333],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[338.67,-711.21,360.18],[0.0252706,-0.498767,-0.866355,0.00479024],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveJ [[338.60,-711.13,382.29],[0.0253785,-0.4988,-0.866333,0.00472333],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveJ [[332.19,-617.03,382.26],[0.0253911,-0.498781,-0.866343,0.00464751],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveJ [[258.78,-622.31,279.45],[0.0255368,-0.498838,-0.866305,0.00492168],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[258.85,-622.44,263.37],[0.0254237,-0.498816,-0.866321,0.00498567],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveJ [[258.78,-622.31,279.45],[0.0255368,-0.498838,-0.866305,0.00492168],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveJ [[339.62,-454.98,274.99],[0.025524,-0.498762,-0.86635,0.0048502],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveJ [[355.26,-455.88,129.00],[0.0432613,-0.497969,-0.8661,-0.00506809],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v500, z50, atornillador;
+	MoveL [[355.33,-455.95,109.14],[0.0432045,-0.497971,-0.866102,-0.00507671],[-1,-1,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveJ [[355.26,-455.88,129.00],[0.0432613,-0.497969,-0.8661,-0.00506809],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v500, z50, atornillador;
+	MoveJ [[339.62,-454.98,274.99],[0.025524,-0.498762,-0.86635,0.0048502],[-1,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+ENDPROC
+
+PROC PA2_LH()
+	MoveJ [[92.78,661.22,465.96],[0.00245097,-0.583708,0.811949,-0.00422338],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[164.41,780.40,464.27],[0.00245194,-0.583719,0.811941,-0.00420333],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[169.19,778.14,379.36],[0.00262626,-0.583709,0.811949,-0.00394977],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveL [[169.16,778.19,375.66],[0.00264231,-0.583719,0.811942,-0.00388205],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveL [[164.41,780.40,464.27],[0.00245194,-0.583719,0.811941,-0.00420333],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveJ [[169.18,685.10,469.51],[0.00263416,-0.58371,0.811948,-0.00395772],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[85.81,691.48,327.59],[0.00224065,-0.583826,0.811867,-0.00382481],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[85.85,691.58,275.53],[0.00231745,-0.583827,0.811866,-0.00378255],[0,0,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveL [[86.19,690.83,358.94],[0.00223022,-0.583898,0.811816,-0.00370617],[0,0,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v300, z50, atornillador;
+	MoveL [[180.90,518.78,348.73],[0.0224957,0.600475,-0.799187,0.0149513],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v1000, z50, atornillador;
+	MoveL [[180.93,518.71,185.28],[0.0225006,0.600448,-0.799206,0.0150273],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveL [[180.93,518.72,134.84],[0.0225247,0.600433,-0.799217,0.0150196],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveL [[180.95,518.83,125.65],[0.0224722,0.600434,-0.799219,0.0149568],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+	MoveL [[180.93,518.71,185.28],[0.0225006,0.600448,-0.799206,0.0150273],[0,-1,0,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]], v200, z50, atornillador;
+ENDPROC
+
+ENDMODULE

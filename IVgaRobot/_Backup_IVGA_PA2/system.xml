@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SystemProperties>
+  <SystemName>System</SystemName>
+  <SerialNo>1300-500498</SerialNo>
+  <UsedMedia>
+    <Media path="RobotControl_7.7.1" name="RobotControl" version="7.7.1+296" versionName="7.7.1"/>
+    <Media path="RobotOS_6.0.1" name="RobotOS" version="6.0.1+0" versionName="6.0.1"/>
+    <Media path="Apps_1.9.0" name="FlexPendantSoftwareUpdate" version="1.9.0+0" versionName="1.9.0"/>
+    <Media path="Robots_1.7.1" name="Robots" version="1.7.1+50" versionName="1.7.1"/>
+  </UsedMedia>
+  <ControlModule>
+    <Option descr="English"/>
+    <Option descr="3120-2 FlexPendant Essential App Package"/>
+    <Option descr="3151-1 FlexPendant Program Package"/>
+    <Option descr="3020-2 PROFINET Device"/>
+    <Option descr="RobotControl Base"/>
+  </ControlModule>
+  <DriveModule>
+    <Name>Robot1</Name>
+    <Option descr="Axis Calibration"/>
+    <Option descr="C30/C90XT-A1"/>
+  </DriveModule>
+  <AdditionalOption>
+    <Name>FlexPendantSoftwareUpdate</Name>
+    <Option descr="FlexPendant App Package"/>
+  </AdditionalOption>
+  <AdditionalOption>
+    <Name>Robots</Name>
+    <Option descr="IRB 1300-10/1.15"/>
+  </AdditionalOption>
+</SystemProperties>

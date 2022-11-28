@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProductSettings version="2.0">
+  <Products>
+    <Product name="RobotControl" version="7.7.1+296" id="abb.robotics.robotcontrol" distName="RobotWare" distVersion="7.7.1">
+      <Features>
+        <Feature id="abb.robotics.robotcontrol.languages.english" displayName="English" robot="1" path="\English\Default Language\System Options\" />
+        <Feature id="abb.robotics.robotcontrol.options.flexpendant.essential" displayName="3120-2 FlexPendant Essential App Package" robot="1" path="\3120-2 FlexPendant Essential App Package\User Interaction Application\System Options\" />
+        <Feature id="abb.robotics.robotcontrol.options.flexpendant.program" displayName="3151-1 FlexPendant Program Package" robot="1" path="\3151-1 FlexPendant Program Package\User Interaction Application\System Options\" />
+        <Feature id="abb.robotics.robotcontrol.options.profinet.slave" displayName="3020-2 PROFINET Device" robot="1" path="\3020-2 PROFINET Device\PROFINET\Industrial Networks and Fieldbuses\System Options\" />
+        <Feature id="abb.robotics.robotcontrol.base" displayName="RobotControl Base" robot="1" path="\RobotControl Base\RobotWare Base\System Options\" />
+        <Feature id="abb.robotics.robotcontrol.options.calaxis" displayName="Axis Calibration" robot="1" />
+        <Feature id="abb.robotics.robotcontrol.drivesystems.drive.dc430a6.du430a6.dm430a2" displayName="C30/C90XT-A1" robot="1" path="\C30/C90XT-A1\C30/C90XT\Controllers\" />
+      </Features>
+    </Product>
+    <Product name="RobotOS" version="6.0.1+0" id="abb.robotics.robotos" distName="RobotWare" distVersion="7.7.1">
+      <Features>
+        <Feature id="abb.robotics.robotos" displayName="Robot Controller Operating System" robot="1" path="\Robot Controller Operating System\Robot OS\System Features\" />
+      </Features>
+    </Product>
+    <Product name="FlexPendantSoftwareUpdate" version="1.9.0+0" id="abb.robotics.flexpendantapps" distName="RobotWare" distVersion="7.7.1">
+      <Features>
+        <Feature id="abb.robotics.flexpendantapps.apps" displayName="FlexPendant App Package" robot="1" path="\FlexPendant App Package\Apps\FlexPendant\" />
+      </Features>
+    </Product>
+    <Product name="Robots" version="1.7.1+50" id="abb.robotics.robots" distName="RobotWare" distVersion="7.7.1">
+      <Features>
+        <Feature id="abb.robotics.robots.robots.irb1300.10-1_15" displayName="IRB 1300-10/1.15" robot="1" path="\IRB 1300-10/1.15\IRB 1300\Articulated Robots\Robots\" />
+      </Features>
+    </Product>
+  </Products>
+</ProductSettings>

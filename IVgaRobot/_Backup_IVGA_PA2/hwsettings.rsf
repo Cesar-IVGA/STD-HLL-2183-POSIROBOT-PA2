@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ProductSettings version="1.0">
+  <SerialNumber>1300-500498</SerialNumber>
+  <Signature>WLOE4L9rjTpStl14tdIpZpsOIRo=</Signature>
+  <Products>
+    <Product name="OmniCoreController" version="1.0.0" id="abb.robotics.controller">
+      <Settings>
+        <Setting id="abb.robotics.controller.variant.c90xt" displayName="OmniCore C90XT" robot="1" />
+      </Settings>
+    </Product>
+  </Products>
+</ProductSettings>
